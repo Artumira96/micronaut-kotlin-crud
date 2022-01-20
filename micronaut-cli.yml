@@ -1,0 +1,23 @@
+applicationType: default
+defaultPackage: com.example
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features:
+  - annotation-api
+  - app-name
+  - graalvm
+  - gradle
+  - http-client
+  - junit
+  - kotlin
+  - kotlin-application
+  - kotlin-build
+  - kotlin-extension-functions
+  - logback
+  - micronaut-build
+  - netty-server
+  - reactor
+  - readme
+  - shade
+  - yaml
