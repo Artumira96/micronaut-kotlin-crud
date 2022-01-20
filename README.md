@@ -72,7 +72,7 @@ expected response:
 `None`
 
 
-##Perequirements
+## Perequirements
 ### DB
 
 In order to run DB use the following command inside project folder:
