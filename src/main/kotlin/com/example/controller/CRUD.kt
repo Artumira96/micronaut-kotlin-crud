@@ -4,46 +4,38 @@ import com.example.model.User
 import com.example.services.UserService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
+import jakarta.inject.Inject
 
 
 @Controller("/user")
-class CRUD {
-
-    var service: UserService = UserService()
+class CRUD (@Inject val service: UserService) {
 
     @Get(value = "/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     fun getUser(id: Int): User? {
-        var user:User?= service.getUser(id)
-        printList()
+        var user: User? = service.getUser(id)
         return user
     }
 
     @Post
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    fun postUser(user: User) :User {
+    fun postUser(user: User): User {
         service.createUser(user)
-        printList()
         return user
     }
 
-    @Put(value = "/{id}")
+    @Patch(value = "/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     fun putUser(id: Int, user: User) {
         user.id = id
         service.updateUser(user)
-        printList()
     }
 
     @Delete(value = "/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    fun deleteUser(id: Int): String {
-        printList()
-        return "deleted {\"userId\":\"$id\"}"
+    fun deleteUser(id: Int) {
+        service.deleteUser(id)
     }
 
-    fun printList() {
-        println(service.userMap)
-    }
+
 }

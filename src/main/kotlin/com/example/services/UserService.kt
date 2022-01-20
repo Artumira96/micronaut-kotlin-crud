@@ -1,39 +1,16 @@
 package com.example.services
 
 import com.example.model.User
-import kotlin.random.Random
-import io.micronaut.http.annotation.S
-@Service
-class UserService {
-    var userMap: MutableMap<Int, User> = hashMapOf()
 
-    fun getUser(id: Int): User? {
-        return userMap.get(id)
-    }
+interface UserService {
+    fun getUser(id: Int): User?
 
-    fun createUser(user: User) {
-        user.id = Random.nextInt()
-        userMap.put(user.id, user)
-    }
+    fun createUser(user: User)
 
-    fun updateUser(user: User) {
-        var current = userMap.get(user.id)
-        current?.update(user)
-    }
+    fun updateUser(user: User)
 
-    fun deleteUser(id: Int) {
-        userMap.remove(id)
-    }
+    fun deleteUser(id: Int)
 
     fun User.update(newUser: User) {
-        if (newUser.name != null) {
-            this.name = newUser.name
-        }
-        if (newUser.lastName != null) {
-            this.lastName = newUser.lastName
-        }
-        if (newUser.age != null) {
-            this.age = newUser.age
-        }
     }
 }
