@@ -10,3 +10,9 @@
 
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
+## DB
+
+In order to run DB usee this command inside project folder:
+```
+docker-compose up
+```
