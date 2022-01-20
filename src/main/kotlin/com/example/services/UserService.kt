@@ -1,9 +1,12 @@
 package com.example.services
 
 import com.example.model.User
+import java.util.*
 
 interface UserService {
-    fun getUser(id: Int): User?
+
+
+    fun getUser(id: Int):  Optional<User>?
 
     fun createUser(user: User)
 
@@ -11,6 +14,5 @@ interface UserService {
 
     fun deleteUser(id: Int)
 
-    fun User.update(newUser: User) {
-    }
+    fun getAllUsers(): MutableIterable<User>
 }

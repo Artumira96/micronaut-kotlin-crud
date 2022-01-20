@@ -34,6 +34,14 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("com.h2database:h2")
+    annotationProcessor("io.micronaut.data:micronaut-data-hibernate-jpa")
+    kapt("io.micronaut.data:micronaut-data-processor:3.2.2")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa:3.2.2")
+
 
 }
 

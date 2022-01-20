@@ -5,6 +5,7 @@ import com.example.services.UserService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 import jakarta.inject.Inject
+import java.util.*
 
 
 @Controller("/user")
@@ -12,9 +13,8 @@ class CRUD (@Inject val service: UserService) {
 
     @Get(value = "/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getUser(id: Int): User? {
-        var user: User? = service.getUser(id)
-        return user
+    fun getUser(id: Int): Optional<User>? {
+        return service.getUser(id)
     }
 
     @Post

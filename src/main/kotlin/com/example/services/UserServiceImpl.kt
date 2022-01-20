@@ -1,20 +1,21 @@
 package com.example.services
 
 import com.example.model.User
+import com.example.repositories.UserRepo
+import jakarta.inject.Inject
 import jakarta.inject.Singleton
-import kotlin.random.Random
+import java.util.*
 
 @Singleton
-class UserServiceImpl : UserService {
+class UserServiceImpl(@Inject var repo: UserRepo) : UserService {
     var userMap: MutableMap<Int, User> = hashMapOf()
 
-    override fun getUser(id: Int): User? {
-        return userMap.get(id)
+    override fun getUser(id: Int): Optional<User> {
+        return repo.findById(id)
     }
 
     override fun createUser(user: User) {
-        user.id = Random.nextInt()
-        userMap.put(user.id, user)
+        repo.save(user)
     }
 
     override fun updateUser(user: User) {
@@ -23,18 +24,21 @@ class UserServiceImpl : UserService {
     }
 
     override fun deleteUser(id: Int) {
-        userMap.remove(id)
+        repo.deleteById(id)
     }
 
-    override fun User.update(newUser: User) {
+     fun User.update(newUser: User) {
         if (newUser.name != null) {
             this.name = newUser.name
         }
-        if (newUser.lastName != null) {
-            this.lastName = newUser.lastName
+        if (newUser.lastname != null) {
+            this.lastname = newUser.lastname
         }
         if (newUser.age != null) {
             this.age = newUser.age
         }
+    }
+    override fun getAllUsers(): MutableIterable<User> {
+        return repo.findAll()
     }
 }
