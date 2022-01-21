@@ -2,7 +2,9 @@ package com.example.controller
 
 import com.example.model.User
 import com.example.services.UserService
+import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
+import io.micronaut.http.MutableHttpResponse
 import io.micronaut.http.annotation.*
 import jakarta.inject.Inject
 import java.util.*
@@ -13,23 +15,25 @@ class CRUD (@Inject val service: UserService) {
 
     @Get(value = "/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getUser(id: Int): Optional<User>? {
-        return service.getUser(id)
+
+    fun getUser(id: Int): MutableHttpResponse<Optional<User>?>? {
+
+        var user = service.getUser(id)
+        return HttpResponse.ok(user)
     }
 
     @Post
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    fun postUser(user: User): User {
+    fun postUser(user: User): MutableHttpResponse<User>? {
         service.createUser(user)
-        return user
+        return HttpResponse.created(user)
     }
 
     @Patch(value = "/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    fun putUser(id: Int, user: User) {
-        user.id = id
-        service.updateUser(user)
+    fun patchUser(id: Int, user: User) {
+        service.updateUser(id, user)
     }
 
     @Delete(value = "/{id}")

@@ -18,9 +18,17 @@ class UserServiceImpl(@Inject var repo: UserRepo) : UserService {
         repo.save(user)
     }
 
-    override fun updateUser(user: User) {
-        var current = userMap.get(user.id)
-        current?.update(user)
+    override fun updateUser(id: Int, newUser: User) {
+        println("new properties $newUser")
+
+        var currentUser: User = repo.findById(id).get()
+        println("DB user $currentUser")
+
+        currentUser.update(newUser)
+
+        println("updated user $currentUser")
+
+        repo.update(currentUser)
     }
 
     override fun deleteUser(id: Int) {

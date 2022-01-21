@@ -10,7 +10,7 @@ interface UserService {
 
     fun createUser(user: User)
 
-    fun updateUser(user: User)
+    fun updateUser(id: Int, user: User)
 
     fun deleteUser(id: Int)
 
