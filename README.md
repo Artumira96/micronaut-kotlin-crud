@@ -2,7 +2,7 @@
 This project is a sample CRUD for a user (Id, Name, lastName, and age) implemented with Kotlin, Micronaut & postgres
 
 command to start the project:
-```shell 
+```shell
 ./gradlew run
 ```
 
@@ -14,10 +14,10 @@ GET
 Expected Response:
 ```json
 {
-    "id": ##,
+    "id": 1,
     "name": "XXX",
     "lastname": "YYY",
-    "age": ##
+    "age": 10
 }
 ```
 POST
@@ -25,11 +25,11 @@ POST
 
 sample request body:
 ```json
-{ 
+{
   "user":
   {
-    "name":"Jhon", 
-    "age":25, 
+    "name":"Jhon",
+    "age":25,
     "lastname":"Doe"
    }
 }
@@ -37,9 +37,9 @@ sample request body:
 Expected Response:
 ```json
 {
-    "id": ##,
-    "name":"Jhon", 
-    "age":25, 
+    "id": 1
+    "name":"Jhon",
+    "age":25,
     "lastname":"Doe"
 }
 ```
@@ -48,10 +48,10 @@ PATCH
 
 sample request body:
 ```json
-{ 
+{
   "user":
   {
-    "age":30, 
+    "age":30,
     "lastname":"Perez"
    }
 }
@@ -59,9 +59,9 @@ sample request body:
 Expected Response:
 ``` json
 {
-    "id": ##,
+    "id": 1,
     "name": "Jhon",
-    ""age":30, 
+    "age":30,
     "lastname":"Perez"
 }
 ```
@@ -72,7 +72,7 @@ expected response:
 `None`
 
 
-##Perequirements
+## Perequirements
 ### DB
 
 In order to run DB use the following command inside project folder:
